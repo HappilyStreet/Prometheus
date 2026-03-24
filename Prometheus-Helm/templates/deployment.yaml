@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app }}-deployment
+  labels:
+    app: {{ .Values.app }}-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: {{ .Values.app }}
+  template:
+    metadata:
+      labels:
+        project: {{ .Values.app }}
+    spec:
+      serviceAccountName: {{ .Values.app }}
+      containers:
+        - name: {{ .Values.app }}-app
+          image: {{ .Values.image.repository }}:{{ .Values.image.repository.tag }}
+          ports:
+          - containerPort: 9090
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/prometheus/
+              readOnly: true
+      volumes:
+        - name: config-volume
+          configMap:
+            name: {{ .Values.app }}-env

@@ -1,0 +1,9 @@
+app: pushgateway
+image:
+  repository: prom/pushgateway
+  tag: latest
+nodetype: ClusterIP
+servicePort: 9091
+
+# serviceAccount:
+#   name: prometheus-sa

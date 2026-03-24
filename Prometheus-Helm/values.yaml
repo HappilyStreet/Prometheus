@@ -1,0 +1,9 @@
+app: prometheus
+image:
+  repository: prom/prometheus
+  tag: latest
+nodetype: NodePort
+servicePort: 30081
+
+# serviceAccount:
+#   name: prometheus-sa
