@@ -17,7 +17,7 @@ spec:
       serviceAccountName: {{ .Values.app }}
       containers:
         - name: {{ .Values.app }}-app
-          image: {{ .Values.image.repository }}:{{ .Values.image.repository.tag }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           ports:
           - containerPort: 9090
           volumeMounts:
