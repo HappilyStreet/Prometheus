@@ -2,6 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: {{ .Values.app }}-data
+  namespace: sunchipspace
 spec:
   accessModes:
     - ReadWriteOnce
